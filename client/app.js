@@ -18,13 +18,29 @@ form.addEventListener('submit', async (e) => {
 const searchOutputs = (searches) => {
     for (let result of searches) {
         let listResult = document.createElement('li');
-        listResult.innerText = `${result.keyword} - ${result.description}`;
+        listResult.innerText = `${result.keyword} - ${result.source} - ${result.description}`;
         document.getElementById('displayResults').appendChild(listResult);
         //document.body.append(result.keyword);
         //document.body.append(result.description);
     }
 }
 
+const getRandomSite = async () => {
+    try{
+        const searchRequest = form.elements.query.value;
+        const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
+        const jsonResponse = await res.json();
+        let randIndex = Math.floor(Math.random() * jsonResponse.length);
+        window.location.href = jsonResponse[randIndex].url;
+        console.log(jsonResponse);
+        console.log(jsonResponse[randIndex].url);
+        console.dir(window.location);
+    } catch(err) {
+        console.log(`Error: ${err}`);
+    }
+}
+
 btn2.addEventListener('click', () => {
-    console.log('works')
+    getRandomSite();
 })
+
