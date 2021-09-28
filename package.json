@@ -1,0 +1,27 @@
+{
+  "name": "google_search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamsamuxumed/GoogleAPI_challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamsamuxumed/GoogleAPI_challenge/issues"
+  },
+  "homepage": "https://github.com/hamsamuxumed/GoogleAPI_challenge#readme",
+  "devDependencies": {
+    "jest": "^27.2.3",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
