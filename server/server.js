@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
 const cors = require('cors');
 const port = 3000;
 
@@ -144,16 +143,7 @@ const search = [
         keyword: 'Classic Chicken',
         description: 'A juicy lightly breaded crispy chicken breast with crunchy lettuce, tomato, mayonnaise, and the perfect pickles all on a toasted bun.',
         url: 'https://www.wendys.com/en-uk/menu-items/classic-chicken'
-    },
-    {
-        id: 20,
-        source: 'bcc',
-        keyword: 'Better Chicken Commitment',
-        description: 'The Better Chicken Commitment is the leading set of standards for broiler welfare driving the food industry towards higher welfare practices.',
-        url: 'https://betterchickencommitment.com/'
     }
-
-
 ]
 
 //Welcome get route
@@ -167,7 +157,11 @@ app.get('/search/:query', (req, res) => {
 
     //If any search result item matches the search query, append it to the temporary array
     for (result of search) {
-        if (result.keyword.toLowerCase().includes(req.params.query)) {
+        let key = result.keyword.toLowerCase();
+        let source = result.source.toLowerCase();
+        let desc = result.description.toLowerCase();
+
+        if (key.includes(req.params.query) || source.includes(req.params.query) || desc.includes(req.params.query)) {
             searchResults.push(result);
         }
     }
