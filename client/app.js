@@ -1,25 +1,30 @@
 const form = document.getElementById('form');
-const form2 = document.getElementById('form-2');
+const btn2 = document.getElementById('btn-2');
 
 form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const searchRequest = form.elements.query.value;
-    const Urlreq = { params: { q: searchRequest } };
-    const res = await axios.get("http://localhost:3000/search/", Urlreq)
-    searchOutputs(res.data);
-    forms.elements.query.value = ''
-
-
+    try{
+        e.preventDefault();
+        const searchRequest = form.elements.query.value;
+        const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
+        const jsonResponse = await res.json();
+        searchOutputs(jsonResponse);
+        console.log(jsonResponse);
+        form.elements.query.value = ''
+    } catch(err) {
+        console.log(`Error: ${err}`);
+    }
 })
 
 const searchOutputs = (searches) => {
     for (let result of searches) {
-        document.body.append(result)
+        let listResult = document.createElement('li');
+        listResult.innerText = `${result.keyword} - ${result.description}`;
+        document.getElementById('displayResults').appendChild(listResult);
+        //document.body.append(result.keyword);
+        //document.body.append(result.description);
     }
 }
 
-// form2.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     console.log('works')
-
-// })
+btn2.addEventListener('click', () => {
+    console.log('works')
+})
