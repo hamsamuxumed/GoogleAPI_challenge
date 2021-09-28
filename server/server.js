@@ -1,17 +1,31 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
-//const cors = require('cors'); 
+const cors = require('cors'); 
 const port = 3000;
 
-//app.use(cors()); 
+app.use(cors()); 
 
 const search = [
 {
-  keyword: 'Used Cars For Sale | AutoTrader', 
-  description: 'Used cars for sale, including private sales and local dealers near you. Find the right used car for you on Auto Trader - the UKs top destination.'
+    id: 0, keyword: 'Used Cars For Sale | AutoTrader', description: 'Used cars for sale, including private sales and local dealers near you. Find the right used car for you on Auto Trader - the UKs top destination.'
 },
-{keyword: 'hello', description: 'test'}
+{
+    id: 1, keyword: 'Used Cars For Sale | AutoTrader', description: 'Used cars for sale, including private sales and local dealers near you. Find the right used car for you on Auto Trader - the UKs top destination.'
+}, 
+{
+    id: 2, keyword: 'Cars (2006) - IMDb', description: 'Cars: Directed by John Lasseter, Joe Ranft. With Owen Wilson, Paul Newman, Bonnie Hunt, Larry the Cable Guy. A hot-shot race-car named Lightning McQueen ...'
+}, 
+{
+    id: 3, keyword: 'Chicken recipes | BBC Good Food', description: 'Perk up your poultry with our top chicken recipes. Weve got you covered whether its a traditional roast, a flavourful curry or a ... '
+},
+  
+{
+    id: 4, keyword: 'The best chicken recipes | Jamie Oliver', description: 'Chicken is always a crowd-pleaser, and here are loads of deliciously easy chicken recipes for you to try, from Sunday roasts to zingy salads. '
+},
+{
+    id: 5, keyword: 'Camera Drones - DJI', description: 'Looking for a camera drone? DJI drones offer incredible drone technology for every user. Discover the best camera drones like DJI Mavic Air 2, DJI Mavic 2 ...'
+} 
 ]
 
 //Welcome get route
