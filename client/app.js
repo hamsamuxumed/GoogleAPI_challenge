@@ -34,6 +34,7 @@ form.addEventListener('submit', async (e) => {
 const searchOutputs = (searches) => {
     
     const resultList = document.getElementById('displayResults');
+    document.querySelector('img').style.display = 'none';
     
     //Empty results currently on the page
     while(resultList.firstChild){
