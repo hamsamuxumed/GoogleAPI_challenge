@@ -7,24 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Search</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="icon" href="Images/google-icon.png">
+    <link rel="shortcut icon" type="image/png"
+        href="https://upload.wikimedia.org/wikipedia/commons/2/2d/Google-favicon-2015.png">
     <link rel="stylesheet" href="./app.css">
     <script defer src="./app.js"></script>
 </head>
 
 <body>
-    <!-- <nav>
-        <div id="left"></div>
-        <div id="right">Test</div>
-    </nav> -->
+
     <section>
-        <img src="" alt="google logo" />
+        <div class="images">
+
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                alt="google logo" />
+        </div>
         <article class="search-bar">
             <form id="form" action="results.html">
                 <input type="text" name="query" placeholder="Search Google or type a URL">
-                <button id="btn">Search</button>
+                <div class="space-buttons">
+                    <button id="btn">Google Search</button>
+                    <button id="btn-2" href="">I'm feeling lucky</button>
+                </div>
+
             </form>
-            <button id="btn-2" href="">I'm feeling lucky</button>
             <ul id="displayResults"></ul>
 
         </article>
