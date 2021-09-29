@@ -1,11 +1,13 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const axios = require('axios');
+const dotenv = require('dotenv').config()
+const app = express();
 const port = 3000;
 
 app.use(cors());
 
-const search = [
+/* const search = [
     {
         id: 0, keyword: 'Used Cars For Sale',
         source: 'AutoTrader',
@@ -144,13 +146,32 @@ const search = [
         description: 'A juicy lightly breaded crispy chicken breast with crunchy lettuce, tomato, mayonnaise, and the perfect pickles all on a toasted bun.',
         url: 'https://www.wendys.com/en-uk/menu-items/classic-chicken'
     }
-]
+] */
 
 //Welcome get route
 app.get('/', (req, res) => res.send('Welcome to (not)Google search'));
 
 //Retrieve search result route
-app.get('/search/:query', (req, res) => {
+app.get('/search/:query', async (req, res) => {
+    try {
+		const searchQuery = req.params.query;
+        const apiKey = process.env.API_KEY;
+
+        const response = await axios.get(`https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=81628101994699a0d&q=${searchQuery}`);
+	
+		return res.json({
+            success: true,
+            result: response.data.items
+        })
+	} catch (err) {
+		return res.status(500).json({
+			success: false,
+			result: err.message,
+		})
+	}
+});
+
+/*app.get('/search/:query', (req, res) => {
 
     //Temporary result storage array
     let searchResults = [];
@@ -169,7 +190,7 @@ app.get('/search/:query', (req, res) => {
     //If no items found send message, otherwise send search results
     !searchResults.length ? res.send('No results found') : res.send(searchResults);
 
-});
+}); */
 
 //Start server
 app.listen(port, () => {

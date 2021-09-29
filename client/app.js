@@ -7,8 +7,8 @@ form.addEventListener('submit', async (e) => {
         const searchRequest = form.elements.query.value;
         const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
         const jsonResponse = await res.json();
-        searchOutputs(jsonResponse);
-        console.log(jsonResponse);
+        console.log(jsonResponse.result);
+        searchOutputs(jsonResponse.result);
         form.elements.query.value = ''
     } catch(err) {
         console.log(`Error: ${err}`);
@@ -16,12 +16,17 @@ form.addEventListener('submit', async (e) => {
 })
 
 const searchOutputs = (searches) => {
-    for (let result of searches) {
+    
+    const resultList = document.getElementById('displayResults');
+    
+    while(resultList.firstChild){
+        resultList.firstChild.remove()
+    }
+
+    for (let search of searches) {
         let listResult = document.createElement('li');
-        listResult.innerText = `${result.keyword} - ${result.source} - ${result.description}`;
+        listResult.innerText = `${search.title} - ${search.snippet} - ${search.link}`;
         document.getElementById('displayResults').appendChild(listResult);
-        //document.body.append(result.keyword);
-        //document.body.append(result.description);
     }
 }
 
