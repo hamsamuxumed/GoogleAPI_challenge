@@ -1,8 +1,11 @@
+
 const form = document.getElementById('form');
 const btn2 = document.getElementById('btn-2');
 
+
+// on submit data is fetch from the server and passed on to the searchOutputs function
 form.addEventListener('submit', async (e) => {
-    try{
+    try {
         e.preventDefault();
         const searchRequest = form.elements.query.value;
         const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
@@ -10,11 +13,12 @@ form.addEventListener('submit', async (e) => {
         searchOutputs(jsonResponse);
         console.log(jsonResponse);
         form.elements.query.value = ''
-    } catch(err) {
+    } catch (err) {
         console.log(`Error: ${err}`);
     }
 })
 
+// this function iterate over the objects and creates and li's for each of them 
 const searchOutputs = (searches) => {
     for (let result of searches) {
         let listResult = document.createElement('li');
@@ -25,8 +29,9 @@ const searchOutputs = (searches) => {
     }
 }
 
+// this function gets data from the server and picks a random url from the data
 const getRandomSite = async () => {
-    try{
+    try {
         const searchRequest = form.elements.query.value;
         const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
         const jsonResponse = await res.json();
@@ -35,7 +40,7 @@ const getRandomSite = async () => {
         console.log(jsonResponse);
         console.log(jsonResponse[randIndex].url);
         console.dir(window.location);
-    } catch(err) {
+    } catch (err) {
         console.log(`Error: ${err}`);
     }
 }
