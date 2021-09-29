@@ -29,8 +29,9 @@ const searchOutputs = (searches) => {
     }
 }
 
+// this function gets data from the server and picks a random url from the data
 const getRandomSite = async () => {
-    try{
+    try {
         const searchRequest = form.elements.query.value;
         const res = await fetch(`http://localhost:3000/search/${searchRequest}`)
         const jsonResponse = await res.json();
@@ -39,7 +40,7 @@ const getRandomSite = async () => {
         console.log(jsonResponse);
         console.log(jsonResponse[randIndex].url);
         console.dir(window.location);
-    } catch(err) {
+    } catch (err) {
         console.log(`Error: ${err}`);
     }
 }
