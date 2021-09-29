@@ -6,12 +6,39 @@
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    width: 95%;
+    padding: 20px;
+    flex-direction: column;
+  }
 
-/* nav {
-    border-bottom:2px solid black;
-    height:60px;
-    line-height:60px;
-} */
+ .space-buttons {
+    display: block;
+ }
+
+  input {
+      width: 65%;
+      border: 1px solid #ccccccc0;
+      padding: 11px 60px 11px 60px;
+      outline: none;
+      border-radius: 40px;
+  }
+
+  button {
+    margin: 0 8px;
+    margin-top: 30px;
+    padding: 10px 25px;
+    border-radius: 3px;
+    background:#f5f5f5c2; 
+    border:none;
+  }
+  button:hover {
+    border: 1px solid #a7a5a5;
+  }
 
 #displayResults {
     list-style: none;
